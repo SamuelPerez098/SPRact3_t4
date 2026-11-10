@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Figura Anime</title>
+</head>
+<body>
+    <h1>Registrar Figura (@ModelAttribute)</h1>
+    <form th:action="@{/figuras/guardar}" th:object="${figura}" method="post">
+        <label>Personaje:</label>
+        <input type="text" th:field="*{personaje}" required><br><br>
+
+        <label>Anime:</label>
+        <input type="text" th:field="*{anime}" required><br><br>
+        
+        <label>Precio ($):</label>
+        <input type="number" step="0.01" th:field="*{precio}" required><br><br>
+
+        <button type="submit">Guardar Figura</button>
+    </form>
+    <br>
+    <p>Desarrollador: <strong th:text="${desarrollador}"></strong></p>
+    <a th:href="@{/figuras/listar}">Volver a la colección</a>
+</body>
+</html>

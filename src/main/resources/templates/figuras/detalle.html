@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de la Figura</title>
+</head>
+<body>
+    <h1>Detalle de la Figura (@PathVariable)</h1>
+    <div th:if="${figura != null}">
+        <p><strong>ID:</strong> <span th:text="${figura.id}"></span></p>
+        <p><strong>Personaje:</strong> <span th:text="${figura.personaje}"></span></p>
+        <p><strong>Anime:</strong> <span th:text="${figura.anime}"></span></p>
+        <p><strong>Precio:</strong> $<span th:text="${figura.precio}"></span></p>
+    </div>
+    <div th:if="${figura == null}">
+        <p style="color:red;">Figura no encontrada en la colección.</p>
+    </div>
+    <br>
+    <p>Desarrollador: <strong th:text="${desarrollador}"></strong></p>
+    <a th:href="@{/figuras/listar}">Volver a la Colección</a>
+</body>
+</html>

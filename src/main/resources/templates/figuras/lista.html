@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Colección de Figuras Anime</title>
+</head>
+<body>
+    <h1 th:text="${nombreProyecto}"></h1>
+    <p>Desarrollado por: <strong th:text="${desarrollador}"></strong></p>
+
+    <h2>Filtrar Figuras por Anime (@RequestParam)</h2>
+    <form th:action="@{/figuras/listar}" method="get">
+        <input type="text" name="anime" placeholder="Ej. One Piece, Naruto...">
+        <button type="submit">Buscar</button>
+    </form>
+    <br>
+    <a th:href="@{/figuras/nuevo}">+ Registrar Nueva Figura</a>
+
+    <h2>Catálogo de Figuras</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Personaje</th>
+                <th>Anime</th>
+                <th>Precio ($)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fig : ${figuras}">
+                <td th:text="${fig.id}">1</td>
+                <td th:text="${fig.personaje}">Goku</td>
+                <td th:text="${fig.anime}">Dragon Ball</td>
+                <td th:text="${fig.precio}">45.0</td>
+                <td>
+                    <a th:href="@{/figuras/detalle/{id}(id=${fig.id})}">Ver Detalle (@PathVariable)</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
